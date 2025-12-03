@@ -40,3 +40,15 @@ if __name__ == '__main__':
     w.process(5)
     w.ekstra("informacje dodatkowe")
     w.wybor(10)
+
+    print("\n==== 4) Generowanie __init__ z adnotacji ====\n")
+    class Point(metaclass=AutoInitMeta):
+        x:int
+        y:int
+        label:str
+
+    p1 = Point(4,7,"p1")
+    p2 = Point(11,1,"p2")
+
+    print(f"Point p1: {p1.__dict__}")
+    print(f"Point p2: {p2.__dict__}")

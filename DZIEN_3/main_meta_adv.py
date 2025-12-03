@@ -66,3 +66,17 @@ if __name__ == '__main__':
     print(f"c1 is c2: {c1 is c2}")
     print(f"c1.id: {id(c1)} - c2.id: {id(c2)}")
 
+print("\n==== 6) StructFactoryMeta - klasa zdefiniowana przez __fields__  ====\n")
+class UserStruct(metaclass=StructFactoryMeta):
+    __fields__ = {
+        "id":int,
+        "name":str
+    }
+
+u_ok = UserStruct(id = 1,name="Marcin")
+print(f"UserStruct OK: {u_ok.id},{u_ok.name},{u_ok.as_dict()}")
+
+try:
+    u_ok = UserStruct(id="b", name="Eryk")
+except TypeError as e:
+    print(e)

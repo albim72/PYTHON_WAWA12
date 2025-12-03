@@ -52,3 +52,17 @@ if __name__ == '__main__':
 
     print(f"Point p1: {p1.__dict__}")
     print(f"Point p2: {p2.__dict__}")
+
+    print("\n==== 5) Singleton ====\n")
+    class Config(metaclass=SingletonMeta):
+        def __init__(self):
+            print("Config zainicjowany")
+            self.value = 42
+    c1 = Config()
+    c2 = Config()
+    print(f"c1 == c2: {c1 == c2}")
+    print(f"c1.value: {c1.value}")
+    print(f"c2.value: {c2.value}")
+    print(f"c1 is c2: {c1 is c2}")
+    print(f"c1.id: {id(c1)} - c2.id: {id(c2)}")
+

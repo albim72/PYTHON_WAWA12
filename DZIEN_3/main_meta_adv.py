@@ -80,3 +80,21 @@ try:
     u_ok = UserStruct(id="b", name="Eryk")
 except TypeError as e:
     print(e)
+
+print("\n==== 7) ModelMeta - mini ORM  ====\n")
+
+class UserModel(BaseModel):
+    id:int
+    name:str
+    active:bool = True
+
+UserModel.create_table()
+
+user = UserModel()
+user.id = 1
+user.name = "Martyna"
+user.active = True
+user.save()
+
+rows = UserModel.all()
+print(f"Rekordy: {rows}")

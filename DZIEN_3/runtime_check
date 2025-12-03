@@ -1,0 +1,22 @@
+from typing import Protocol, runtime_checkable
+
+@runtime_checkable
+class HasArea(Protocol):
+    def area(self) -> float: ...
+
+class Circle:
+    def __init__(self, r: float):
+        self.r = r
+    def area(self):
+        from math import pi
+        return pi * self.r ** 2
+
+class BadShape:
+    # def area(self):
+    #     return "no area for you!"
+    pass
+
+shape = Circle(3.0)
+
+print(isinstance(shape, HasArea))
+print(isinstance(BadShape(), HasArea))
